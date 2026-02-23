@@ -1,0 +1,8 @@
+
+3 – Dado os nomes abaixo, julgue se o nome se refere a uma classe (C), nome de método (M) ou atributo (A).
+
+
+a) Animal C     b) voar A       c) equipamento A
+d) baterFoto M  e) falar A      f) Rei C
+g) Avião C      h) getAltura M  i) Voo C
+j) Scanner C    k) length A     l) String C
