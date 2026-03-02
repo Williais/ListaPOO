@@ -23,5 +23,7 @@ public class Programa {
         
         System.out.printf("O Produto do tipo " + p.getTipo() + " Com o valos em Reais de " + real + " terá um Custo Final em Real de " + custoTotal);
 
+
+        s.close();
     }
 }
