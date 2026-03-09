@@ -1,6 +1,6 @@
 package Lista3.projetoPontos;
 
-public enum TipoQuadrante {
+enum TipoQuadrante {
     PRIMEIRO,
     SEGUNDO,
     TERCEIRO,

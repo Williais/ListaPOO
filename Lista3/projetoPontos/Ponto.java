@@ -4,6 +4,8 @@ public class Ponto {
     private int x;
     private int y;
 
+    
+
     public void setX(int a) {
         x = a;
     }
