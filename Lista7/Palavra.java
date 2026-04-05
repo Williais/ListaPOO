@@ -16,4 +16,13 @@ public class Palavra {
     public String getPalavra(){
         return palavra;
     }
+
+    public void setDica(String d){
+        this.dica = d;
+    }
+
+    public String getDica(){
+        return dica;
+    }
+
 }
