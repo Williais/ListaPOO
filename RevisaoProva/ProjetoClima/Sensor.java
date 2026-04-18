@@ -28,14 +28,4 @@ public class Sensor {
         this.temperatura = d;
     }
 
-    public String getSugestao(){
-        if(TipoClima.ENSOLARADO && temperatura > 30){
-            return "Use protetor solar";
-        } else if (TipoClima.CHOVENDO) {
-            return "Use protetor solar";
-        }
-        {
-
-        }
-    }
 }
