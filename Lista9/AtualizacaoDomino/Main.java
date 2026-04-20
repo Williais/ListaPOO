@@ -20,54 +20,52 @@ public class Main {
         Domino primeiraPeca = jogoDomino.puxarPeca();
         jogoDomino.conectarPontaEsquerda(primeiraPeca);
 
-        int pecasJogadas = 0;
+        System.out.println("Primeira peça: " + primeiraPeca);
 
         boolean vezDoJ1 = true;
         while(true){
-        System.out.println("Peça da mesa: " + primeiraPeca);
-            if(vezDoJ1){
-                System.out.println("Em jogo: Esquerda:  " + primeiraPeca.getLadoA() + " | Direita: " + primeiraPeca.getLadoB());
-                System.out.println("Mão do Jogador 1 : " + Arrays.toString(jogador1));
 
-                System.out.print("Jogador 1, Indique o índice da peça que deseja casar (0-5): ");
-                int indice = s.nextInt();
+            System.out.println("\n--- STATUS DO JOGO ---");
+            System.out.println("Em jogo: Esquerda: " + jogoDomino.getPontaAtivaEsquerda() +
+                    " | Direita: " + jogoDomino.getPontaAtivaDireita());
 
-                if(indice < 0 || indice > 5){
-                    System.out.println("indice inexistente! vc perdeu.");
-                    break;
-                }
+            Domino[] maoAtual = vezDoJ1 ? jogador1 : jogador2;
+            int numJogador = vezDoJ1 ? 1 : 2;
 
-                System.out.print("Jogador 1, Em qual lado deseja conectar? (Esquerdo = 1 / Direito = 2): ");
-                int ladoDaPeca = s.nextInt();
+            System.out.println("mao do Jogador " + numJogador + ": " + Arrays.toString(maoAtual));
 
-                Domino pecaEscolhida = jogador1[indice];
+            System.out.print("Jogador " + numJogador + ", indique o índice da peça (0-5): ");
+            int indice = s.nextInt();
 
-                if(ladoDaPeca == 1){
-                    if(jogoDomino.conectarPontaEsquerda(pecaEscolhida)){
-                        primeiraPeca = pecaEscolhida;
-                        jogador1[indice] = null;
-                        pecasJogadas++;
-                    }else{
-                        System.out.println("As peças não se encaixaram. vc perdeu o jogo.");
-                        break;
-                    }
-
-
-                }
-
-
-                if(pecaEscolhida == null){
-                    System.out.println("Essa posição ta vazia. vc perdeu o jogo.");
-                    break;
-                }
-
+            if(indice < 0 || indice > 5 || maoAtual[indice] == null){
+                System.out.println("Índice inválido ou posição vazia! Você perdeu.");
+                break;
             }
 
+            Domino pecaEscolhida = maoAtual[indice];
+            System.out.print("Em qual lado conectar? (1-Esquerdo / 2-Direito): ");
+            int lado = s.nextInt();
 
+            boolean sucesso = false;
+            if(lado == 1) {
+                sucesso = jogoDomino.conectarPontaEsquerda(pecaEscolhida);
+            } else {
+                sucesso = jogoDomino.conectarPontaDireita(pecaEscolhida);
+            }
 
+            if(sucesso) {
 
+                maoAtual[indice] = null;
+                if(Jogo.testeSeAcabou(maoAtual)) {
+                    System.out.println("Jogador " + numJogador + " venceu o jogo!");
+                    break;
+                }
 
-
+                vezDoJ1 = !vezDoJ1;
+            } else {
+                System.out.println("peças nao se encaixam. Jogador " + numJogador + " perdeu.");
+                break;
+            }
         }
 
     }
