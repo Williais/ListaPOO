@@ -17,8 +17,10 @@ public class Main {
             jogador2[i] = jogoDomino.puxarPeca();
         }
 
+
         Domino primeiraPeca = jogoDomino.puxarPeca();
         jogoDomino.conectarPontaEsquerda(primeiraPeca);
+
 
         System.out.println("Primeira peça: " + primeiraPeca);
 

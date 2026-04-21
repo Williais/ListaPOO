@@ -2,7 +2,7 @@ package Lista9.projeto2;
 
 public class ContaCorrente {
 
-    private float saldo;
+    private float saldo; // escopo de instancia
     private String titular;
     private String numero;
     private float chequeEspecial;
@@ -48,5 +48,6 @@ public class ContaCorrente {
 
     public String toString(){
         return "Tipo da Conta: Conta Corrente - Numero da Conta: " + numero + " Com Saldo Total: R$ " + saldo;
+
     }
 }
